@@ -39,7 +39,8 @@ jobs:
           token: ${{ secrets.CD_REPO_TOKEN }}
       
       - name: Update image tag in the deployment
-        run: sed -i "s#.*image: .*#        image: hassaneid/frontend:v${{ github.run_number }}#g" cdRepo/deployment.yaml
+        run: |
+          sed -i "s#.*image: .*#        image: hassaneid/frontend:v${{ github.run_number }}#g" cdRepo/deployment.yaml
 
       - name: Commit and push changes
         run: |
